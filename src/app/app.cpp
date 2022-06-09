@@ -22,14 +22,11 @@ namespace app
     {
       std::string msg;
     };
-    In in;
 
     using Out = void;
   };
   DECLARE_JSON_TYPE(Write::In);
   DECLARE_JSON_REQUIRED_FIELDS(Write::In, msg);
-  DECLARE_JSON_TYPE(Write);
-  DECLARE_JSON_REQUIRED_FIELDS(Write, in);
 
   class AppHandlers : public ccf::UserEndpointRegistry
   {
