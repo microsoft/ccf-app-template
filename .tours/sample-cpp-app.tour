@@ -24,7 +24,7 @@
     },
     {
       "file": "src/app/app.cpp",
-      "description": "The application logic is defined in this namespace.\n\nIn particular, it defines:\n1. The types used by the app to record its state in the key-value store.\n2. The API schema for each endpoint.\n3. The HTTP endpoints that contain the business logic of the application and that can be invoked by clients requests.",
+      "description": "The application logic is defined in this namespace.\n\nIn particular, it defines:\n1. The types used by the app to record its state in the key-value store.\n2. The API schema for each endpoint.\n3. The HTTP endpoints that contain the business logic of the application and that can be invoked by client requests.",
       "line": 12
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "file": "src/app/app.cpp",
-      "description": "This is the CCF key-value store API to write from a specific map. \n\nA \"handle\" should be first retrieved on the map, using the `rw<Map>(RECORDS)` method on the unique transaction object `ctx.tx`. Then, a value (`in.msg`) can be recorded at a specific key (`id`) using the `put(key, value)` call. \n\nSee https://microsoft.github.io/CCF/release/2.x/build_apps/kv/index.html for the full key-value store API.",
+      "description": "This is the CCF key-value store API to write to a specific map. \n\nA \"handle\" should be first retrieved on the map, using the `rw<Map>(RECORDS)` method on the unique transaction object `ctx.tx`. Then, a value (`in.msg`) can be recorded at a specific key (`id`) using the `put(key, value)` call. \n\nSee https://microsoft.github.io/CCF/release/2.x/build_apps/kv/index.html for the full key-value store API.",
       "line": 69,
       "selection": {
         "start": {
