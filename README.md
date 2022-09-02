@@ -58,6 +58,18 @@ $ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/s
 "hello world"
 ```
 
+## Docker
+
+Alternatively, it is possible to build a runtime image of this application via docker:
+
+```bash
+$ docker build -t ccf-app-template .
+$ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template
+...
+2022-09-02T10:19:21.433822Z -0.004 0   [info ] ../src/node/node_state.h:1790        | Network TLS connections now accepted
+# It is then possible to query the service externally
+```
+
 ## Code Tour
 
 To get a guided tour of the sample application, checkout this repository in VSCode and use the [CodeTour extension](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour).
