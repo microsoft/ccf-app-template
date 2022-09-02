@@ -1,5 +1,7 @@
 # CCF C++ App Template
 
+[![CCF App Template CI](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml/badge.svg)](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml)
+
 Template repository for CCF C++ applications.
 
 ## Install Dependencies
