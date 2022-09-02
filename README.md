@@ -1,5 +1,7 @@
 # CCF C++ App Template
 
+[![CCF App Template CI](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml/badge.svg)](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml)
+
 Template repository for CCF C++ applications.
 
 ## Install Dependencies
@@ -56,6 +58,18 @@ $ cd ccf_app_template/build
 $ curl -X POST https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem -H "Content-Type: application/json" --data '{"msg": "hello world"}'
 $ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem
 "hello world"
+```
+
+## Docker
+
+Alternatively, it is possible to build a runtime image of this application via docker:
+
+```bash
+$ docker build -t ccf-app-template .
+$ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template
+...
+2022-01-01T12:00:00.000000Z -0.000 0   [info ] ../src/node/node_state.h:1790        | Network TLS connections now accepted
+# It is then possible to interact with the service
 ```
 
 ## Code Tour
