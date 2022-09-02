@@ -1,0 +1,19 @@
+name: "CCF App Template CI"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/ccf/app/dev:lts-devcontainer
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build App
+        run: mkdir -p build && cd build && CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja .. && ninja
