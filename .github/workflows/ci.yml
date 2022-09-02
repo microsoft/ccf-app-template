@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  checks:
+  build-app:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/ccf/app/dev:lts-devcontainer
 
@@ -15,5 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build App
+      - name: Build app
         run: mkdir -p build && cd build && CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja .. && ninja
+
+      - name: Build container
+        run: docker build -t ccf-app-template .
