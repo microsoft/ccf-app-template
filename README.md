@@ -13,7 +13,7 @@ $ wget https://github.com/microsoft/CCF/releases/download/ccf-2.0.0/ccf_2.0.0_am
 $ sudo dpkg -i ccf_2.0.0_amd64.deb # Install CCF under /opt/ccf
 $ cat /opt/ccf/share/VERSION_LONG
 ccf-2.0.0
-$ /opt/ccf/getting_started/setup_vm/run.sh # Install dependencies
+$ /opt/ccf/getting_started/setup_vm/run.sh /opt/ccf/getting_started/setup_vm/app-dev.yml # Install dependencies
 ```
 
 Alternatively, you can checkout this repository in a [VSCode development container](https://code.visualstudio.com/docs/remote/containers).
