@@ -29,6 +29,8 @@ libccf_app.enclave.so.signed # SGX-enabled application
 libccf_app.virtual.so # Virtual application (i.e. insecure!)
 ```
 
+See [docs](https://microsoft.github.io/CCF/main/build_apps) for complete instructions on how to build a CCF app.
+
 ## Run
 
 ```bash
