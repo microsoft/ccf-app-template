@@ -10,7 +10,7 @@ Template repository for CCF applications.
 
 **The quickest way to build and run this sample CCF app is to create a GitHub codespace by clicking [here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=496290904&machine=basicLinux32gb&devcontainer_path=.devcontainer.json&location=WestEurope).**
 
-All dependencies will be automatically installed and the application can be quickly [built](#build) and [run](#test) by following the steps below.
+All dependencies will be automatically installed and the application can be quickly [built](#build) and [run](#run) by following the steps below.
 
 Also check out the [code tour](#code-tour) to get an overview of the app.
 
