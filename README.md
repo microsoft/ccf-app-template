@@ -21,7 +21,7 @@ Also check out the [code tour](#code-tour) to get an overview of the app.
 In the local checkout of this repository:
 
 ```bash
-$ mkdir build & cd build
+$ mkdir build && cd build
 $ CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja ..
 $ ninja
 $ ls
