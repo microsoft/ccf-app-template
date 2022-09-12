@@ -1,6 +1,6 @@
 # CCF App Template
 
-[![Try me out](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=496290904&machine=basicLinux32gb&devcontainer_path=.devcontainer.json&location=WestEurope)
+[![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)
 
 [![CCF App Template CI](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml/badge.svg)](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml)
 
@@ -8,17 +8,21 @@ Template repository for CCF applications.
 
 ## Quickstart
 
-**The quickest way to build and run this sample CCF app is to create a GitHub codespace by clicking [here](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=496290904&machine=basicLinux32gb&devcontainer_path=.devcontainer.json&location=WestEurope).**
+**The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking: 
+[![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)**
 
-All dependencies will be automatically installed and the application can be quickly [built](#build) and [run](#run) by following the steps below.
+All dependencies will be automatically installed (takes ~2 mins on first checkout) and the app can be quickly [built](#build) and [run](#run) by following [the steps below](#build).
+
 
 Also check out the [code tour](#code-tour) to get an overview of the app.
+
+Alternatively, if your organisation supports it, you can checkout this repository in a Github Codespace: [![Open in Github codespace](https://img.shields.io/static/v1?label=Open+in&message=GitHub+codespace&logo=github&color=2F363D&logoColor=white&labelColor=2C2C32)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=496290904&machine=basicLinux32gb&devcontainer_path=.devcontainer.json&location=WestEurope)
 
 ---
 
 ## Build
 
-In the local checkout of this repository:
+In the checkout of this repository:
 
 ```bash
 $ mkdir build && cd build
@@ -47,7 +51,7 @@ Python environment successfully setup
 [12:00:00.000] Press Ctrl+C to shutdown the network
 ```
 
-Or, for an SGX-enabled application (unavailable in Github codespace): `$ /opt/ccf/bin/sandbox.sh -p ./libccf_app.enclave.so.signed -e release`
+Or, for an SGX-enabled application (unavailable in development container): `$ /opt/ccf/bin/sandbox.sh -p ./libccf_app.enclave.so.signed -e release`
 
 In another terminal:
 
@@ -72,17 +76,17 @@ $ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provis
 
 ## Dependencies
 
-If this repository is checked out on a bare VM (e.g. for SGX deployments), the dependencies required to build and run the CCF app can be installed as follows:
+If this repository is checked out on a bare VM (e.g. [for SGX deployments](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)), the dependencies required to build and run the CCF app can be installed as follows:
 
 ```bash
-$ wget https://github.com/microsoft/CCF/releases/download/ccf-2.0.0/ccf_2.0.0_amd64.deb
-$ sudo dpkg -i ccf_2.0.0_amd64.deb # Install CCF under /opt/ccf
+$ wget https://github.com/microsoft/CCF/releases/download/ccf-2.0.0/ccf_2.0.7_amd64.deb
+$ sudo dpkg -i ccf_2.0.7_amd64.deb # Install CCF under /opt/ccf
 $ cat /opt/ccf/share/VERSION_LONG
-ccf-2.0.0
+ccf-2.0.7
 $ /opt/ccf/getting_started/setup_vm/run.sh /opt/ccf/getting_started/setup_vm/app-dev.yml # Install dependencies
 ```
 
-Alternatively, you can checkout this repository in a [VSCode development container](https://code.visualstudio.com/docs/remote/containers).
+See the [CCF official docs](https://microsoft.github.io/CCF/main/build_apps/install_bin.html#install-ccf) for more info.
 
 ## Code Tour
 
