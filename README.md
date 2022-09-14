@@ -67,11 +67,18 @@ $ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/s
 It is possible to build a runtime image of this application via docker:
 
 ```bash
-$ docker build -t ccf-app-template .
-$ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template
+$ docker build -t ccf-app-template:enclave -f docker/ccf_app.enclave .
+$ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template:enclave
 ...
 2022-01-01T12:00:00.000000Z -0.000 0   [info ] ../src/node/node_state.h:1790        | Network TLS connections now accepted
 # It is then possible to interact with the service
+```
+
+Or, for the non-SGX (a.k.a. virtual) variant:
+
+```bash
+$ docker build -t ccf-app-template:virtual -f docker/ccf_app.virtual .
+$ docker run ccf-app-template:virtual
 ```
 
 ## Dependencies
