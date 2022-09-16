@@ -1,6 +1,6 @@
 {
   "enclave": {
-    "file": "/opt/ccf/lib/libjs_generic.enclave.so.signed",
+    "file": "/usr/lib/ccf/libjs_generic.enclave.so.signed",
     "type": "Release"
   },
   "network": {
