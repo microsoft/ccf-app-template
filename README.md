@@ -4,27 +4,83 @@
 
 [![CCF App Template CI](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml/badge.svg)](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml)
 
-Template repository for CCF applications.
+Template repository for JavaScript and C++ CCF applications.
 
 ## Quickstart
 
 **The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking: 
 [![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)**
 
-All dependencies will be automatically installed (takes ~2 mins on first checkout) and the app can be quickly [built](#build) and [run](#run) by following [the steps below](#build).
+All dependencies will be automatically installed (takes ~2 mins on first checkout).
 
-
-Also check out the [code tour](#code-tour) to get an overview of the app.
-
-Alternatively, if your organisation supports it, you can checkout this repository in a Github Codespace: [![Open in Github codespace](https://img.shields.io/static/v1?label=Open+in&message=GitHub+codespace&logo=github&color=2F363D&logoColor=white&labelColor=2C2C32)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=496290904&machine=basicLinux32gb&devcontainer_path=.devcontainer.json&location=WestEurope)
+Alternatively, if your organisation supports it, you can checkout this repository in a Github codespace: [![Open in Github codespace](https://img.shields.io/static/v1?label=Open+in&message=GitHub+codespace&logo=github&color=2F363D&logoColor=white&labelColor=2C2C32)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=496290904&machine=basicLinux32gb&devcontainer_path=.devcontainer.json&location=WestEurope)
 
 ---
 
-## Build
+## JavaScript
+
+CCF apps can be written in JavaScript/TypeScript. This is the quickest way to develop new apps as this does not require any compilation step and the app can be updated on the fly, via [a governance proposal](https://microsoft.github.io/CCF/main/build_apps/js_app_bundle.html#deployment).
+
+The JavaScript sample bundle is located in the [`js/`](js/) directory.
+
+### Run JS app
+
+```bash
+$ /opt/ccf/bin/sandbox.sh --js-app-bundle ./js/
+[12:00:00.000] Virtual mode enabled
+[12:00:00.000] Starting 1 CCF node...
+[12:00:00.000] Started CCF network with the following nodes:
+[12:00:00.000]   Node [0] = https://127.0.0.1:8000
+[12:00:00.000] You can now issue business transactions to the libjs_generic application
+[12:00:00.000] Loaded JS application: ./js/
+[12:00:00.000] Keys and certificates have been copied to the common folder: .../ccf-app-template/workspace/sandbox_common
+[12:00:00.000] See https://microsoft.github.io/CCF/main/use_apps/issue_commands.html for more information
+[12:00:00.000] Press Ctrl+C to shutdown the network
+```
+
+In another terminal:
+
+```bash
+$ curl -X POST https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem -H "Content-Type: application/json" --data '{"msg": "hello world"}'
+$ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem
+hello world
+```
+
+### Docker
+
+It is possible to build a runtime image of the JavaScript application via docker:
+
+```bash
+$ docker build -t ccf-app-template:js-enclave -f docker/ccf_app_js.enclave .
+$ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template:js-enclave
+...
+2022-01-01T12:00:00.000000Z -0.000 0   [info ] ../src/node/node_state.h:1790        | Network TLS connections now accepted
+# It is then possible to interact with the service
+```
+
+Or, for the non-SGX (a.k.a. virtual) variant:
+
+```bash
+$ docker build -t ccf-app-template:js-virtual -f docker/ccf_app_js.virtual .
+$ docker run ccf-app-template:virtual
+```
+
+---
+
+## C++
+
+CCF apps can also be written in C++. This offers better performance than JavaScript apps but requires a compilation step and a restart of the CCF node for deployment.
+
+The C++ sample app is located in the [`cpp/`](cpp/) directory.
+
+Also check out the [code tour](#code-tour) to get an overview of the C++ app.
+
+### Build C++ app
 
 In the checkout of this repository:
 
 ```bash
+$ cd cpp/
 $ mkdir build && cd build
 $ CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja ..
 $ ninja
@@ -35,7 +91,7 @@ libccf_app.virtual.so # Virtual application (i.e. insecure!)
 
 See [docs](https://microsoft.github.io/CCF/main/build_apps) for complete instructions on how to build a CCF app.
 
-## Run
+### Run C++ app
 
 ```bash
 $ /opt/ccf/bin/sandbox.sh -p ./libccf_app.virtual.so
@@ -53,22 +109,13 @@ Python environment successfully setup
 
 Or, for an SGX-enabled application (unavailable in development container): `$ /opt/ccf/bin/sandbox.sh -p ./libccf_app.enclave.so.signed -e release`
 
-In another terminal:
+### Docker
+
+It is possible to build a runtime image of the C++ application via docker:
 
 ```bash
-$ cd build
-$ curl -X POST https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem -H "Content-Type: application/json" --data '{"msg": "hello world"}'
-$ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem
-"hello world"
-```
-
-## Docker
-
-It is possible to build a runtime image of this application via docker:
-
-```bash
-$ docker build -t ccf-app-template:enclave -f docker/ccf_app.enclave .
-$ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template:enclave
+$ docker build -t ccf-app-template:cpp-enclave -f docker/ccf_app_cpp.enclave .
+$ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template:cpp-enclave
 ...
 2022-01-01T12:00:00.000000Z -0.000 0   [info ] ../src/node/node_state.h:1790        | Network TLS connections now accepted
 # It is then possible to interact with the service
@@ -77,13 +124,15 @@ $ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provis
 Or, for the non-SGX (a.k.a. virtual) variant:
 
 ```bash
-$ docker build -t ccf-app-template:virtual -f docker/ccf_app.virtual .
+$ docker build -t ccf-app-template:cpp-virtual -f docker/ccf_app_cpp.virtual .
 $ docker run ccf-app-template:virtual
 ```
 
+---
+
 ## Dependencies
 
-If this repository is checked out on a bare VM (e.g. [for SGX deployments](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)), the dependencies required to build and run the CCF app can be installed as follows:
+If this repository is checked out on a bare VM (e.g. [for SGX deployments](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)), the dependencies required to build and run the C++ app can be installed as follows:
 
 ```bash
 $ wget https://github.com/microsoft/CCF/releases/download/ccf-2.0.0/ccf_2.0.7_amd64.deb
@@ -97,4 +146,4 @@ See the [CCF official docs](https://microsoft.github.io/CCF/main/build_apps/inst
 
 ## Code Tour
 
-In VSCode, a [code tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) of this app can be started with: Ctrl + P, `> CodeTour: Start Tour`
+In VSCode, a [code tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) of the C++ app can be started with: Ctrl + P, `> CodeTour: Start Tour`
