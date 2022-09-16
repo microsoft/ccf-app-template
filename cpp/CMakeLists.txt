@@ -9,13 +9,13 @@ if(NOT TARGET ccf)
   find_package(ccf REQUIRED)
 endif()
 
-add_ccf_app(ccf_app SRCS src/app/app.cpp)
+add_ccf_app(ccf_app SRCS ${CMAKE_CURRENT_SOURCE_DIR}/app/app.cpp)
 
 # Generate an ephemeral signing key
 add_custom_command(
   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/signing_key.pem
   COMMAND openssl genrsa -out ${CMAKE_CURRENT_BINARY_DIR}/signing_key.pem -3
-          3072
+  3072
 )
 add_custom_target(
   app_signing_key ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/signing_key.pem

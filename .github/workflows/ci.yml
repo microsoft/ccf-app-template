@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build-app:
+  build-cpp-app:
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/ccf/app/dev:lts-devcontainer
 
