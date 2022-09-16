@@ -17,6 +17,7 @@ jobs:
 
       - name: Build app
         run: mkdir -p build && cd build && CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja .. && ninja
+        working-directory: cpp
 
   build-containers:
     runs-on: ubuntu-20.04
