@@ -35,5 +35,3 @@ export function read(request) {
   }
   return { body: ccf.bufToStr(msg) };
 }
-
-

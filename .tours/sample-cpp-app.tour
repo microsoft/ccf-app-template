@@ -115,22 +115,12 @@
     {
       "file": "README.md",
       "description": "You can build the sample application by running the following steps.\n\nMake sure the dependencies have been installed, or that you have checked out this repository in a VSCode development container (see above).",
-      "line": 19
+      "line": 51
     },
     {
       "file": "README.md",
       "description": "Finally, you can run the application locally using the CCF sandbox script.\n\nYou can then interact with the application with `curl`.",
-      "line": 34,
-      "selection": {
-        "start": {
-          "line": 56,
-          "character": 3
-        },
-        "end": {
-          "line": 56,
-          "character": 172
-        }
-      }
+      "line": 71
     }
   ],
   "ref": "main"
