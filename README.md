@@ -26,7 +26,7 @@ The JavaScript sample bundle is located in the [`js/`](js/) directory.
 ### Run JS app
 
 ```bash
-/opt/ccf/bin/sandbox.sh --js-app-bundle ./js/
+$ /opt/ccf/bin/sandbox.sh --js-app-bundle ./js/
 [12:00:00.000] Virtual mode enabled
 [12:00:00.000] Starting 1 CCF node...
 [12:00:00.000] Started CCF network with the following nodes:
@@ -36,6 +36,14 @@ The JavaScript sample bundle is located in the [`js/`](js/) directory.
 [12:00:00.000] Keys and certificates have been copied to the common folder: .../ccf-app-template/workspace/sandbox_common
 [12:00:00.000] See https://microsoft.github.io/CCF/main/use_apps/issue_commands.html for more information
 [12:00:00.000] Press Ctrl+C to shutdown the network
+```
+
+In another terminal:
+
+```bash
+$ curl -X POST https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem -H "Content-Type: application/json" --data '{"msg": "hello world"}'
+$ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem
+hello world
 ```
 
 ---
@@ -82,18 +90,9 @@ Python environment successfully setup
 
 Or, for an SGX-enabled application (unavailable in development container): `$ /opt/ccf/bin/sandbox.sh -p ./libccf_app.enclave.so.signed -e release`
 
-In another terminal:
-
-```bash
-$ cd build
-$ curl -X POST https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem -H "Content-Type: application/json" --data '{"msg": "hello world"}'
-$ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem
-"hello world"
-```
-
 ### Docker
 
-It is possible to build a runtime image of this application via docker:
+It is possible to build a runtime image of the C++ application via docker:
 
 ```bash
 $ docker build -t ccf-app-template:enclave -f docker/ccf_app.enclave .
@@ -110,7 +109,9 @@ $ docker build -t ccf-app-template:virtual -f docker/ccf_app.virtual .
 $ docker run ccf-app-template:virtual
 ```
 
-### Dependencies
+---
+
+## Dependencies
 
 If this repository is checked out on a bare VM (e.g. [for SGX deployments](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)), the dependencies required to build and run the C++ app can be installed as follows:
 
@@ -124,6 +125,6 @@ $ /opt/ccf/getting_started/setup_vm/run.sh /opt/ccf/getting_started/setup_vm/app
 
 See the [CCF official docs](https://microsoft.github.io/CCF/main/build_apps/install_bin.html#install-ccf) for more info.
 
-### Code Tour
+## Code Tour
 
-In VSCode, a [code tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) of this app can be started with: Ctrl + P, `> CodeTour: Start Tour`
+In VSCode, a [code tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) of the C++ app can be started with: Ctrl + P, `> CodeTour: Start Tour`
