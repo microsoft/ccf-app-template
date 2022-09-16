@@ -95,7 +95,7 @@ Or, for an SGX-enabled application (unavailable in development container): `$ /o
 It is possible to build a runtime image of the C++ application via docker:
 
 ```bash
-$ docker build -t ccf-app-template:enclave -f docker/ccf_app.enclave .
+$ docker build -t ccf-app-template:enclave -f docker/ccf_app_cpp.enclave .
 $ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provision:/dev/sgx_provision -v /dev/sgx:/dev/sgx ccf-app-template:enclave
 ...
 2022-01-01T12:00:00.000000Z -0.000 0   [info ] ../src/node/node_state.h:1790        | Network TLS connections now accepted
@@ -105,7 +105,7 @@ $ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provis
 Or, for the non-SGX (a.k.a. virtual) variant:
 
 ```bash
-$ docker build -t ccf-app-template:virtual -f docker/ccf_app.virtual .
+$ docker build -t ccf-app-template:virtual -f docker/ccf_app_cpp.virtual .
 $ docker run ccf-app-template:virtual
 ```
 

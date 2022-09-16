@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build enclave container
-        run: docker build -t ccf-app-template:enclave -f docker/ccf_app.enclave .
+        run: docker build -t ccf-app-template:cpp-enclave -f docker/ccf_app_cpp.enclave .
 
       - name: Build virtual container
-        run: docker build -t ccf-app-template:virtual -f docker/ccf_app.virtual .
+        run: docker build -t ccf-app-template:cpp-virtual -f docker/ccf_app_cpp.virtual .
