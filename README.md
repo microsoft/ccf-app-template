@@ -1,6 +1,4 @@
-# CCF App Template
-
-[![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)
+# CCF App Template [![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)
 
 [![CCF App Template CI](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml/badge.svg)](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml)
 
@@ -8,16 +6,14 @@ Template repository for JavaScript and C++ CCF applications.
 
 ## Quickstart
 
-**The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking: 
-[![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)**
+The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking: 
+[![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)
 
 All dependencies will be automatically installed (takes ~2 mins on first checkout).
 
 Alternatively, if your organisation supports it, you can checkout this repository in a Github codespace: [![Open in Github codespace](https://img.shields.io/static/v1?label=Open+in&message=GitHub+codespace&logo=github&color=2F363D&logoColor=white&labelColor=2C2C32)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=496290904&machine=basicLinux32gb&devcontainer_path=.devcontainer.json&location=WestEurope)
 
----
-
-## JavaScript
+## <img src="https://user-images.githubusercontent.com/42961061/191275583-88e00f94-73aa-4d66-9786-047987eb9fa9.png" height=50px> </img> JavaScript
 
 CCF apps can be written in JavaScript/TypeScript. This is the quickest way to develop new apps as this does not require any compilation step and the app can be updated on the fly, via [a governance proposal](https://microsoft.github.io/CCF/main/build_apps/js_app_bundle.html#deployment).
 
@@ -65,9 +61,7 @@ $ docker build -t ccf-app-template:js-virtual -f docker/ccf_app_js.virtual .
 $ docker run ccf-app-template:virtual
 ```
 
----
-
-## C++
+## <img src="https://user-images.githubusercontent.com/42961061/191275172-24269bf0-bb9c-402d-8900-2d589582a781.png" height=50px></img> C++ 
 
 CCF apps can also be written in C++. This offers better performance than JavaScript apps but requires a compilation step and a restart of the CCF node for deployment.
 
