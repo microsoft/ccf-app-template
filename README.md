@@ -22,14 +22,16 @@ The JavaScript sample bundle is located in the [`js/`](js/) directory.
 ### Run JS app
 
 ```bash
-$ /opt/ccf/bin/sandbox.sh --js-app-bundle ./js/
+$ npm --prefix ./js install
+$ npm --prefix ./js run build
+$ /opt/ccf/bin/sandbox.sh --js-app-bundle ./js/dist/
 [12:00:00.000] Virtual mode enabled
 [12:00:00.000] Starting 1 CCF node...
 [12:00:00.000] Started CCF network with the following nodes:
 [12:00:00.000]   Node [0] = https://127.0.0.1:8000
 [12:00:00.000] You can now issue business transactions to the libjs_generic application
-[12:00:00.000] Loaded JS application: ./js/
-[12:00:00.000] Keys and certificates have been copied to the common folder: .../ccf-app-template/workspace/sandbox_common
+[12:00:00.000] Loaded JS application: ./js/dist/
+[12:00:00.000] Keys and certificates have been copied to the common folder: /workspaces/ccf-app-template/workspace/sandbox_common
 [12:00:00.000] See https://microsoft.github.io/CCF/main/use_apps/issue_commands.html for more information
 [12:00:00.000] Press Ctrl+C to shutdown the network
 ```

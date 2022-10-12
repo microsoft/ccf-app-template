@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "del-cli -f dist/ && rollup --config && cp app.json dist/ && node build_bundle.js dist/",
+    "bundle": "node build_bundle.js dist",
+    "test": "node --version"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@microsoft/ccf-app": "^3.0.0-dev4"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "del-cli": "^3.0.1",
+    "rollup": "^2.41.0"
+  }
+}
