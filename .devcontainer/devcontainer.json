@@ -1,8 +1,6 @@
 {
   "name": "Development Container for CCF C++ Apps",
-  "context": "..",
-  "build": { "dockerfile": "Dockerfile" },
-  "runArgs": [],
+  "dockerFile": "Dockerfile",
   "extensions": [
     "ms-vscode.cpptools",
     "vsls-contrib.codetour"
