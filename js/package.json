@@ -10,7 +10,7 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@microsoft/ccf-app": "^3.0.0-dev4"
+    "@microsoft/ccf-app": "^3.0.0-dev6"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.1.0",
