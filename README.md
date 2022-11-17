@@ -74,7 +74,7 @@ The CCF network is started with one node and one member, you need to execute the
 - Create and submit [an add users proposal](https://microsoft.github.io/CCF/main/governance/open_network.html#adding-users)
 - Open the network for users ([using proposal](https://microsoft.github.io/CCF/main/governance/open_network.html#opening-the-network))
 
-### CChost
+### Bare VM
 
 The application can be tested using CChost on Linux environment.
 To Start a test CCF network on a Linux environment, it requires [CCF to be intalled](https://microsoft.github.io/CCF/main/build_apps/install_bin.html) or you can create a CCF-enabled VM using [Creating a Virtual Machine in Azure to run CCF](https://github.com/microsoft/CCF/blob/main/getting_started/azure_vm/README.md)
