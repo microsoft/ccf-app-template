@@ -64,6 +64,8 @@ $ docker build -t ccf-app-template:js-virtual -f docker/ccf_app_js.virtual .
 $ docker run ccf-app-template:virtual
 ```
 
+#### Network governance
+
 The CCF network is started with one node and one member, you need to execute the following governance steps to initialize the network
 
 - [Activate the network existing member to start a network governance](https://microsoft.github.io/CCF/main/governance/adding_member.html#activating-a-new-member)
@@ -89,7 +91,7 @@ The application can be tested using CChost on Linux environment, To Start a test
  # Now the CCF network is started and further initialization needed before the interaction with the service
 ```
 
-The CCF network is started with one node and one member, please follow the same governance steps as Docker to initialize the network and check [CCF node config file documentation](https://microsoft.github.io/CCF/main/operations/configuration.html)
+The CCF network is started with one node and one member, please follow the [same governance steps as Docker](#network-governance) to initialize the network and check [CCF node config file documentation](https://microsoft.github.io/CCF/main/operations/configuration.html)
 
 
 ### Managed CCF
