@@ -54,7 +54,7 @@ $ docker run --device /dev/sgx_enclave:/dev/sgx_enclave --device /dev/sgx_provis
 ...
 2022-01-01T12:00:00.000000Z -0.000 0   [info ] ../src/node/node_state.h:1790        | Network TLS connections now accepted
 
-# Now the CCF network is started and further initialization needed before the interaction with the service
+# Now the CCF service is started and member governance is needed to allow trusted users to interact with the deployed application
 ```
 
 Or, for the non-SGX (a.k.a. virtual) variant:
