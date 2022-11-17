@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/ccf/app/run-js:3.0.0-rc2-virtual
 
 # Note: libjs_generic.virtual is not included in run-js container
 COPY --from=builder /opt/ccf_virtual/lib/libjs_generic.virtual.so /usr/lib/ccf
-
+RUN true # https://github.com/moby/moby/issues/37965
 COPY --from=builder /opt/ccf_virtual/bin/*.js /app/
 RUN true # https://github.com/moby/moby/issues/37965
 COPY --from=builder /opt/ccf_virtual/bin/keygenerator.sh /app/ 
