@@ -7,21 +7,33 @@ on:
     branches: [main]
 
 jobs:
-  build-cpp-app:
+  build-cpp-app-sgx:
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/ccf/app/dev:lts-devcontainer
+    container: mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-sgx
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build app
-        run: mkdir -p build && cd build && CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja .. && ninja
+      - name: Build app (SGX)
+        run: mkdir -p build && cd build && CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja -DCOMPILE_TARGET=sgx .. && ninja
+        working-directory: cpp
+
+  build-cpp-app-virtual:
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-virtual
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build app (virtual)
+        run: mkdir -p build && cd build && CC="$(which clang-10)" CXX="$(which clang++-10)" cmake -GNinja -DCOMPILE_TARGET=virtual .. && ninja
         working-directory: cpp
 
   build-containers:
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/ccf/app/dev:lts-devcontainer
+    container: mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-sgx
 
     steps:
       - name: Checkout repository

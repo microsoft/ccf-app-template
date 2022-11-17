@@ -5,9 +5,12 @@ cmake_minimum_required(VERSION 3.16)
 
 project(ccf_app LANGUAGES C CXX)
 
-if(NOT TARGET ccf)
-  find_package(ccf REQUIRED)
-endif()
+option(
+  COMPILE_TARGET
+  "Compile target to build for, one of [virtual;sgx;snp], defaults to virtual"
+  virtual)
+
+find_package("ccf_${COMPILE_TARGET}" REQUIRED)
 
 add_ccf_app(ccf_app SRCS ${CMAKE_CURRENT_SOURCE_DIR}/app/app.cpp)
 
