@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-virtual as builder
 COPY ./cpp /cpp
 RUN mkdir -p /build/
 WORKDIR /build/
-RUN CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja /cpp && ninja
+RUN CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja -DCOMPILE_TARGET=virtual /cpp && ninja
 
 # Run
 FROM mcr.microsoft.com/ccf/app/run:3.0.0-rc2-virtual
