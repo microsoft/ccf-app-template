@@ -76,7 +76,7 @@ The CCF network is started with one node and one member, you need to execute the
 
 ### Bare VM
 
-The application can be tested using CChost on Linux environment.
+The application can be tested using `cchost` on Linux environment.
 To Start a test CCF network on a Linux environment, it requires [CCF to be intalled](https://microsoft.github.io/CCF/main/build_apps/install_bin.html) or you can create a CCF-enabled VM using [Creating a Virtual Machine in Azure to run CCF](https://github.com/microsoft/CCF/blob/main/getting_started/azure_vm/README.md)
 
 ```bash
