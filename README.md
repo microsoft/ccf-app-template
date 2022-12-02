@@ -24,7 +24,7 @@ The JavaScript sample bundle is located in the [`js/`](js/) directory.
 ```bash
 $ npm --prefix ./js install
 $ npm --prefix ./js run build
-$ /opt/ccf/bin/sandbox.sh --js-app-bundle ./js/dist/
+$ /opt/ccf_virtual/bin/sandbox.sh --js-app-bundle ./js/dist/
 [12:00:00.000] Virtual mode enabled
 [12:00:00.000] Starting 1 CCF node...
 [12:00:00.000] Started CCF network with the following nodes:
@@ -132,7 +132,7 @@ See [docs](https://microsoft.github.io/CCF/main/build_apps) for complete instruc
 ### Run C++ app
 
 ```bash
-$ /opt/ccf/bin/sandbox.sh -p ./libccf_app.virtual.so
+$ /opt/ccf_virtual/bin/sandbox.sh -p ./libccf_app.virtual.so
 Setting up Python environment...
 Python environment successfully setup
 [12:00:00.000] Virtual mode enabled
@@ -145,7 +145,7 @@ Python environment successfully setup
 [12:00:00.000] Press Ctrl+C to shutdown the network
 ```
 
-Or, for an SGX-enabled application (unavailable in development container): `$ /opt/ccf/bin/sandbox.sh -p ./libccf_app.enclave.so.signed -e release`
+Or, for an SGX-enabled application (unavailable in development container): `$ /opt/ccf_sgx/bin/sandbox.sh -p ./libccf_app.enclave.so.signed -e release`
 
 ### Docker
 

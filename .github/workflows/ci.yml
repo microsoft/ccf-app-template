@@ -9,7 +9,7 @@ on:
 jobs:
   build-cpp-app-sgx:
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-sgx
+    container: mcr.microsoft.com/ccf/app/dev:3.0.1-sgx
 
     steps:
       - name: Checkout repository
@@ -21,7 +21,7 @@ jobs:
 
   build-cpp-app-virtual:
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-virtual
+    container: mcr.microsoft.com/ccf/app/dev:3.0.1-virtual
 
     steps:
       - name: Checkout repository
@@ -33,7 +33,7 @@ jobs:
 
   build-containers:
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-sgx
+    container: mcr.microsoft.com/ccf/app/dev:3.0.1-sgx
 
     steps:
       - name: Checkout repository
