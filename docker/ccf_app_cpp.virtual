@@ -1,12 +1,12 @@
 # Build
-FROM mcr.microsoft.com/ccf/app/dev:3.0.0-rc2-virtual as builder
+FROM mcr.microsoft.com/ccf/app/dev:3.0.1-virtual as builder
 COPY ./cpp /cpp
 RUN mkdir -p /build/
 WORKDIR /build/
 RUN CC="$(which clang-10)" CXX="$(which clang++-10)" cmake -GNinja -DCOMPILE_TARGET=virtual /cpp && ninja
 
 # Run
-FROM mcr.microsoft.com/ccf/app/run:3.0.0-rc2-virtual
+FROM mcr.microsoft.com/ccf/app/run:3.0.1-virtual
 
 COPY --from=builder /build/libccf_app.virtual.so /app/
 COPY --from=builder /opt/ccf_virtual/bin/*.js /app/
