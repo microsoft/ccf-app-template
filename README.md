@@ -61,7 +61,7 @@ Or, for the non-SGX (a.k.a. virtual) variant:
 
 ```bash
 $ docker build -t ccf-app-template:js-virtual -f docker/ccf_app_js.virtual .
-$ docker run ccf-app-template:virtual
+$ docker run ccf-app-template:js-virtual
 ```
 
 #### Network governance
@@ -163,7 +163,7 @@ Or, for the non-SGX (a.k.a. virtual) variant:
 
 ```bash
 $ docker build -t ccf-app-template:cpp-virtual -f docker/ccf_app_cpp.virtual .
-$ docker run ccf-app-template:virtual
+$ docker run ccf-app-template:cpp-virtual
 ```
 
 ---
