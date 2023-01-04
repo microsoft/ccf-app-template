@@ -4,6 +4,8 @@
 
 Template repository for JavaScript and C++ CCF applications.
 
+Note: For complete sample apps, see https://github.com/microsoft/ccf-app-samples. 
+
 ## Quickstart
 
 The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking: 
