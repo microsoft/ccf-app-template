@@ -99,10 +99,10 @@ The CCF network is started with one node and one member, please follow the [same
 
 ### Managed CCF
 
-The application can be tested using [Azure Managed CCF](https://techcommunity.microsoft.com/t5/azure-confidential-computing/microsoft-introduces-preview-of-azure-managed-confidential/ba-p/3648986) ``(Pre-release phase)``, you can create Azure Managed CCF serivce on your subscription, that will give you a ready CCF network
+The application can be tested using [Azure Managed CCF](https://techcommunity.microsoft.com/t5/azure-confidential-computing/microsoft-introduces-preview-of-azure-managed-confidential/ba-p/3648986) ``(Pre-release phase)``, you can create Azure Managed CCF service on your subscription, that will give you a ready CCF network
 
 - First, create the network's initial member certificate, please check [Certificates generation](https://microsoft.github.io/CCF/main/governance/adding_member.html)
-- Create a new Azure Managed CCF serivce (the initial member certificate required as input)
+- Create a new Azure Managed CCF service (the initial member certificate required as input)
 - Build the application and [create a deployment proposal](https://microsoft.github.io/CCF/main/build_apps/js_app_bundle.html#deployment)
 - Deploy the application proposal, [using governance calls](https://microsoft.github.io/CCF/main/governance/proposals.html#creating-a-proposal)
 - Create and submit [an add users proposal](https://microsoft.github.io/CCF/main/governance/proposals.html#creating-a-proposal)
