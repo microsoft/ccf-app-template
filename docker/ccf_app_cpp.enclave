@@ -1,12 +1,12 @@
 # Build
-FROM mcr.microsoft.com/ccf/app/dev:3.0.1-sgx as builder
+FROM mcr.microsoft.com/ccf/app/dev:4.0.14-sgx as builder
 COPY ./cpp /cpp
 RUN mkdir -p /build/
 WORKDIR /build/
-RUN CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -DCOMPILE_TARGET=sgx -GNinja /cpp && ninja
+RUN cmake -DCOMPILE_TARGET=sgx -GNinja /cpp && ninja
 
 # Run
-FROM mcr.microsoft.com/ccf/app/run:3.0.1-sgx
+FROM mcr.microsoft.com/ccf/app/run:4.0.14-sgx
 
 COPY --from=builder /build/libccf_app.enclave.so.signed /app/
 COPY --from=builder /opt/ccf_sgx/bin/*.js /app/

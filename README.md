@@ -122,7 +122,7 @@ In the checkout of this repository:
 ```bash
 $ cd cpp/
 $ mkdir build && cd build
-$ CC="/opt/oe_lvi/clang-10" CXX="/opt/oe_lvi/clang++-10" cmake -GNinja ..
+$ cmake -GNinja ..
 $ ninja
 $ ls
 libccf_app.enclave.so.signed # SGX-enabled application
@@ -175,10 +175,10 @@ $ docker run ccf-app-template:cpp-virtual
 If this repository is checked out on a bare VM (e.g. [for SGX deployments](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)), the dependencies required to build and run the C++ app can be installed as follows:
 
 ```bash
-$ wget https://github.com/microsoft/CCF/releases/download/ccf-2.0.0/ccf_2.0.7_amd64.deb
-$ sudo dpkg -i ccf_2.0.7_amd64.deb # Install CCF under /opt/ccf
-$ cat /opt/ccf/share/VERSION_LONG
-ccf-2.0.7
+$ wget https://github.com/microsoft/CCF/releases/download/ccf-4.0.14/ccf_virtual_4.0.14_amd64.deb
+$ sudo dpkg -i ccf_virtual_4.0.14_amd64.deb # Install CCF under /opt/ccf
+$ cat /opt/ccf_virtual/share/VERSION_LONG
+ccf-4.0.14
 $ /opt/ccf/getting_started/setup_vm/run.sh /opt/ccf/getting_started/setup_vm/app-dev.yml # Install dependencies
 ```
 
