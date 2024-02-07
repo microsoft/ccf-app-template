@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/ccf/app/dev:4.0.14-virtual as builder
 COPY ./cpp /cpp
 RUN mkdir -p /build/
 WORKDIR /build/
-RUN cmake -GNinja -DCOMPILE_TARGET=virtual /cpp && ninja
+RUN CC="clang-15" CXX="clang++-15" cmake -GNinja -DCOMPILE_TARGET=virtual /cpp && ninja
 
 # Run
 FROM mcr.microsoft.com/ccf/app/run:4.0.14-virtual
