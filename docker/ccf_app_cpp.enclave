@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/ccf/app/dev:4.0.14-sgx as builder
 COPY ./cpp /cpp
 RUN mkdir -p /build/
 WORKDIR /build/
-RUN cmake -DCOMPILE_TARGET=sgx -GNinja /cpp && ninja
+RUN CC="clang-11" CXX="clang++-11" cmake -DCOMPILE_TARGET=sgx -GNinja /cpp && ninja
 
 # Run
 FROM mcr.microsoft.com/ccf/app/run:4.0.14-sgx

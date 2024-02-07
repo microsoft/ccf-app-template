@@ -122,7 +122,7 @@ In the checkout of this repository:
 ```bash
 $ cd cpp/
 $ mkdir build && cd build
-$ cmake -GNinja ..
+$ CC="clang-11" CXX="clang++-11" cmake -GNinja ..
 $ ninja
 $ ls
 libccf_app.enclave.so.signed # SGX-enabled application
