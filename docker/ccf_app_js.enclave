@@ -1,8 +1,8 @@
 # Build
-FROM mcr.microsoft.com/ccf/app/dev:3.0.1-sgx as builder
+FROM mcr.microsoft.com/ccf/app/dev:4.0.14-sgx as builder
 
 # Run
-FROM mcr.microsoft.com/ccf/app/run-js:3.0.1-sgx
+FROM mcr.microsoft.com/ccf/app/run-js:4.0.14-sgx
 
 COPY --from=builder /opt/ccf_sgx/bin/*.js /app/
 COPY --from=builder /opt/ccf_sgx/bin/keygenerator.sh /app/ 
