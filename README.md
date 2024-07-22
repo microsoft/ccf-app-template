@@ -4,11 +4,11 @@
 
 Template repository for JavaScript and C++ CCF applications.
 
-Note: For complete sample apps, see https://github.com/microsoft/ccf-app-samples. 
+Note: For complete sample apps, see https://github.com/microsoft/ccf-app-samples.
 
 ## Quickstart
 
-The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking: 
+The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking:
 [![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)
 
 All dependencies will be automatically installed (takes ~2 mins on first checkout).
@@ -85,10 +85,10 @@ To start a test CCF network on a Linux environment, it requires [CCF to be intal
 # Start the CCF network using the cchost in
 
 # Enclave mode
- /opt/ccf/bin/cchost --config ./config/cchost_config_enclave_js.json
+ /opt/ccf_sgx/bin/cchost --config ./config/cchost_config_enclave_js.json
 
 # Or Virtual mode
-/opt/ccf/bin/cchost --config ./config/cchost_config_virtual_js.json
+/opt/ccf_virtual/bin/cchost --config ./config/cchost_config_virtual_js.json
 ...
 
  # Now the CCF network is started and further initialization needed before the interaction with the service
@@ -96,10 +96,9 @@ To start a test CCF network on a Linux environment, it requires [CCF to be intal
 
 The CCF network is started with one node and one member, please follow the [same governance steps as Docker](#network-governance) to initialize the network and check [CCF node config file documentation](https://microsoft.github.io/CCF/main/operations/configuration.html)
 
-
 ### Managed CCF
 
-The application can be tested using [Azure Managed CCF](https://techcommunity.microsoft.com/t5/azure-confidential-computing/microsoft-introduces-preview-of-azure-managed-confidential/ba-p/3648986) ``(Pre-release phase)``, you can create Azure Managed CCF service on your subscription, that will give you a ready CCF network
+The application can be tested using [Azure Managed CCF](https://techcommunity.microsoft.com/t5/azure-confidential-computing/microsoft-introduces-preview-of-azure-managed-confidential/ba-p/3648986) `(Pre-release phase)`, you can create Azure Managed CCF service on your subscription, that will give you a ready CCF network
 
 - First, create the network's initial member certificate, please check [Certificates generation](https://microsoft.github.io/CCF/main/governance/adding_member.html)
 - Create a new Azure Managed CCF service (the initial member certificate required as input)
@@ -107,7 +106,7 @@ The application can be tested using [Azure Managed CCF](https://techcommunity.mi
 - Deploy the application proposal, [using governance calls](https://microsoft.github.io/CCF/main/governance/proposals.html#creating-a-proposal)
 - Create and submit [an add users proposal](https://microsoft.github.io/CCF/main/governance/proposals.html#creating-a-proposal)
 
-## <img src="https://user-images.githubusercontent.com/42961061/191275172-24269bf0-bb9c-402d-8900-2d589582a781.png" height=50px></img> C++ 
+## <img src="https://user-images.githubusercontent.com/42961061/191275172-24269bf0-bb9c-402d-8900-2d589582a781.png" height=50px></img> C++
 
 CCF apps can also be written in C++. This offers better performance than JavaScript apps but requires a compilation step and a restart of the CCF node for deployment.
 
@@ -175,12 +174,14 @@ $ docker run ccf-app-template:cpp-virtual
 If this repository is checked out on a bare VM (e.g. [for SGX deployments](https://docs.microsoft.com/en-us/azure/confidential-computing/quick-create-portal)), the dependencies required to build and run the C++ app can be installed as follows:
 
 ```bash
-$ wget https://github.com/microsoft/CCF/releases/download/ccf-4.0.14/ccf_virtual_4.0.14_amd64.deb
-$ sudo dpkg -i ccf_virtual_4.0.14_amd64.deb # Install CCF under /opt/ccf
-$ cat /opt/ccf_virtual/share/VERSION_LONG
-ccf-4.0.14
-$ /opt/ccf/getting_started/setup_vm/run.sh /opt/ccf/getting_started/setup_vm/app-dev.yml # Install dependencies
+$ wget https://github.com/microsoft/CCF/releases/download/ccf-5.0.0/ccf_sgx_5.0.0_amd64.deb
+$ sudo dpkg -i ccf_sgx_5.0.0_amd64.deb # Install CCF under /opt/ccf_sgx
+$ cat /opt/ccf_sgx/share/VERSION_LONG
+ccf-5.0.0
+$ /opt/ccf_sgx/getting_started/setup_vm/run.sh /opt/ccf_sgx/getting_started/setup_vm/app-dev.yml # Install dependencies
 ```
+
+For a non-SGX VM, replace `ccf_sgx` in all the commands above with `ccf_virtual`.
 
 See the [CCF official docs](https://microsoft.github.io/CCF/main/build_apps/install_bin.html#install-ccf) for more info and [Modern JavaScript application development](https://microsoft.github.io/CCF/main/build_apps/js_app_bundle.html).
 

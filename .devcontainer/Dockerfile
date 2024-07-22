@@ -1,3 +1,3 @@
-FROM mcr.microsoft.com/ccf/app/dev:4.0.14-virtual
+FROM ghcr.io/microsoft/ccf/app/dev/virtual:ccf-5.0.0
 
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs

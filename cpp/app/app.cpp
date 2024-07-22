@@ -12,7 +12,7 @@
 namespace app
 {
   // Key-value store types
-  using Map = kv::Map<size_t, std::string>;
+  using Map = ccf::kv::Map<size_t, std::string>;
   static constexpr auto RECORDS = "records";
 
   // API types
@@ -31,7 +31,7 @@ namespace app
   class AppHandlers : public ccf::UserEndpointRegistry
   {
   public:
-    AppHandlers(ccfapp::AbstractNodeContext& context) :
+    AppHandlers(ccf::AbstractNodeContext& context) :
       ccf::UserEndpointRegistry(context)
     {
       openapi_info.title = "CCF Sample C++ App";
@@ -42,11 +42,11 @@ namespace app
 
       auto write = [this](auto& ctx, nlohmann::json&& params) {
         const auto parsed_query =
-          http::parse_query(ctx.rpc_ctx->get_request_query());
+          ccf::http::parse_query(ctx.rpc_ctx->get_request_query());
 
         std::string error_reason;
         size_t id = 0;
-        if (!http::get_query_value(parsed_query, "id", id, error_reason))
+        if (!ccf::http::get_query_value(parsed_query, "id", id, error_reason))
         {
           return ccf::make_error(
             HTTP_STATUS_BAD_REQUEST,
@@ -76,11 +76,11 @@ namespace app
 
       auto read = [this](auto& ctx, nlohmann::json&& params) {
         const auto parsed_query =
-          http::parse_query(ctx.rpc_ctx->get_request_query());
+          ccf::http::parse_query(ctx.rpc_ctx->get_request_query());
 
         std::string error_reason;
         size_t id = 0;
-        if (!http::get_query_value(parsed_query, "id", id, error_reason))
+        if (!ccf::http::get_query_value(parsed_query, "id", id, error_reason))
         {
           return ccf::make_error(
             HTTP_STATUS_BAD_REQUEST,
@@ -112,11 +112,11 @@ namespace app
   };
 } // namespace app
 
-namespace ccfapp
+namespace ccf
 {
   std::unique_ptr<ccf::endpoints::EndpointRegistry> make_user_endpoints(
-    ccfapp::AbstractNodeContext& context)
+    ccf::AbstractNodeContext& context)
   {
     return std::make_unique<app::AppHandlers>(context);
   }
-} // namespace ccfapp
+} // namespace ccf
