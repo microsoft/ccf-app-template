@@ -1,6 +1,8 @@
-import { ccf } from "@microsoft/ccf-app/global";
+import * as ccfapp from "@microsoft/ccf-app";
 
-function parse_request_query(request) {
+function parse_request_query(request: ccfapp.Request): {
+  [key: string]: string;
+} {
   const elements = request.query.split("&");
   const obj = {};
   for (const kv of elements) {
@@ -10,30 +12,30 @@ function parse_request_query(request) {
   return obj;
 }
 
-export function write(request) {
+const recordsMap = ccfapp.typedKv("records", ccfapp.string, ccfapp.string);
+
+export function write(request: ccfapp.Request): ccfapp.Response {
   const parsedQuery = parse_request_query(request);
-  if (parsedQuery.id === undefined)
-  {
+  if (parsedQuery.id === undefined) {
     return { body: { error: "Missing query parameter 'id'" } };
   }
-  const id = ccf.strToBuf(parsedQuery.id);
   const params = request.body.json();
 
-  ccf.kv["records"].set(id, ccf.strToBuf(params.msg));
+  recordsMap.set(parsedQuery.id, params.msg);
   return {};
 }
 
-export function read(request) {
+export function read(request: ccfapp.Request): ccfapp.Response {
   const parsedQuery = parse_request_query(request);
-  if (parsedQuery.id === undefined)
-  {
+  if (parsedQuery.id === undefined) {
     return { body: { error: "Missing query parameter 'id'" } };
   }
-  const id = ccf.strToBuf(parsedQuery.id);
 
-  const msg = ccf.kv["records"].get(id);
+  const msg = recordsMap.get(parsedQuery.id);
   if (msg === undefined) {
-    return { body: { error: `Cannot find record for id \"${parsedQuery.id}\".` } };
+    return {
+      body: { error: `Cannot find record for id \"${parsedQuery.id}\".` },
+    };
   }
-  return { body: ccf.bufToStr(msg) };
+  return { body: msg };
 }

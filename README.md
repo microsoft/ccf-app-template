@@ -4,11 +4,11 @@
 
 Template repository for JavaScript and C++ CCF applications.
 
-Note: For complete sample apps, see https://github.com/microsoft/ccf-app-samples. 
+Note: For complete sample apps, see https://github.com/microsoft/ccf-app-samples.
 
 ## Quickstart
 
-The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking: 
+The quickest way to build and run this sample CCF app is to checkout this repository locally in its development container by clicking:
 [![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)
 
 All dependencies will be automatically installed (takes ~2 mins on first checkout).
@@ -41,8 +41,8 @@ $ /opt/ccf_virtual/bin/sandbox.sh --js-app-bundle ./js/dist/
 In another terminal:
 
 ```bash
-$ curl -X POST https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem -H "Content-Type: application/json" --data '{"msg": "hello world"}'
-$ curl https://127.0.0.1:8000/app/log?id=1 --cacert ./workspace/sandbox_common/service_cert.pem
+$ curl -X POST "https://127.0.0.1:8000/app/log?id=1" --cacert ./workspace/sandbox_common/service_cert.pem -H "Content-Type: application/json" --data '{"msg": "hello world"}'
+$ curl "https://127.0.0.1:8000/app/log?id=1" --cacert ./workspace/sandbox_common/service_cert.pem
 hello world
 ```
 
@@ -96,10 +96,9 @@ To start a test CCF network on a Linux environment, it requires [CCF to be intal
 
 The CCF network is started with one node and one member, please follow the [same governance steps as Docker](#network-governance) to initialize the network and check [CCF node config file documentation](https://microsoft.github.io/CCF/main/operations/configuration.html)
 
-
 ### Managed CCF
 
-The application can be tested using [Azure Managed CCF](https://techcommunity.microsoft.com/t5/azure-confidential-computing/microsoft-introduces-preview-of-azure-managed-confidential/ba-p/3648986) ``(Pre-release phase)``, you can create Azure Managed CCF service on your subscription, that will give you a ready CCF network
+The application can be tested using [Azure Managed CCF](https://techcommunity.microsoft.com/t5/azure-confidential-computing/microsoft-introduces-preview-of-azure-managed-confidential/ba-p/3648986) `(Pre-release phase)`, you can create Azure Managed CCF service on your subscription, that will give you a ready CCF network
 
 - First, create the network's initial member certificate, please check [Certificates generation](https://microsoft.github.io/CCF/main/governance/adding_member.html)
 - Create a new Azure Managed CCF service (the initial member certificate required as input)
@@ -107,7 +106,7 @@ The application can be tested using [Azure Managed CCF](https://techcommunity.mi
 - Deploy the application proposal, [using governance calls](https://microsoft.github.io/CCF/main/governance/proposals.html#creating-a-proposal)
 - Create and submit [an add users proposal](https://microsoft.github.io/CCF/main/governance/proposals.html#creating-a-proposal)
 
-## <img src="https://user-images.githubusercontent.com/42961061/191275172-24269bf0-bb9c-402d-8900-2d589582a781.png" height=50px></img> C++ 
+## <img src="https://user-images.githubusercontent.com/42961061/191275172-24269bf0-bb9c-402d-8900-2d589582a781.png" height=50px></img> C++
 
 CCF apps can also be written in C++. This offers better performance than JavaScript apps but requires a compilation step and a restart of the CCF node for deployment.
 
