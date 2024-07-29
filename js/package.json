@@ -16,7 +16,7 @@
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^11.1.6",
-    "del-cli": "^3.0.1",
+    "del-cli": "^5.1.0",
     "rollup": "^2.41.0",
     "tslib": "^2.6.3",
     "typescript": "^5.4.5"
