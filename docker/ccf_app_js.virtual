@@ -4,14 +4,14 @@ FROM ghcr.io/microsoft/ccf/app/dev/virtual:ccf-5.0.0 as builder
 # Run
 FROM ghcr.io/microsoft/ccf/app/run-js/virtual:ccf-5.0.0
 
-# Note: libjs_generic.virtual is not included in run-js container
-COPY --from=builder /opt/ccf_virtual/lib/libjs_generic.virtual.so /usr/lib/ccf
-RUN true # https://github.com/moby/moby/issues/37965
 COPY --from=builder /opt/ccf_virtual/bin/*.js /app/
-RUN true # https://github.com/moby/moby/issues/37965
 COPY --from=builder /opt/ccf_virtual/bin/keygenerator.sh /app/ 
 COPY ./config/cchost_config_virtual_js.json /app/
 WORKDIR /app/
+# IMPORTANT: This creates a member key pair and stores it in the container,
+# which is only acceptable for test purposes. A real deployment must instead
+# create and store keys somewhere secure, and only load the public key in the
+# container, preferably through a mount.
 RUN /app/keygenerator.sh --name member0 --gen-enc-key
 
 EXPOSE 8080/tcp

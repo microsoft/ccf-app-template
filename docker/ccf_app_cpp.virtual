@@ -13,6 +13,10 @@ COPY --from=builder /opt/ccf_virtual/bin/*.js /app/
 COPY --from=builder /opt/ccf_virtual/bin/keygenerator.sh /app/ 
 COPY ./config/cchost_config_virtual_cpp.json /app/
 WORKDIR /app/
+# IMPORTANT: This creates a member key pair and stores it in the container,
+# which is only acceptable for test purposes. A real deployment must instead
+# create and store keys somewhere secure, and only load the public key in the
+# container, preferably through a mount.
 RUN /app/keygenerator.sh --name member0 --gen-enc-key
 
 EXPOSE 8080/tcp
