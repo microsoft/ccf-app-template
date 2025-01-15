@@ -31,6 +31,16 @@ jobs:
         run: mkdir -p build && cd build && CC="$(which clang-15)" CXX="$(which clang++-15)" cmake -GNinja -DCOMPILE_TARGET=virtual .. && ninja
         working-directory: cpp
 
+  build-js-app:
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Build js app
+        run: npm install && npm run build
+        working-directory: js
+
   build-containers:
     runs-on: ubuntu-20.04
     container: ghcr.io/microsoft/ccf/app/dev/sgx:ccf-5.0.0
