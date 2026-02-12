@@ -1,3 +1,6 @@
+> [!NOTE]
+> These templates are no longer maintained. See the [main CCF repo](https://github.com/microsoft/CCF) for latest CCF version information, or [ACL sample apps](https://github.com/microsoft/azureconfidentialledger-app-samples) for maintained samples.
+
 # CCF App Template [![Open in VSCode](https://img.shields.io/static/v1?label=Open+in&message=VSCode&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/ccf-app-template)
 
 [![CCF App Template CI](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml/badge.svg)](https://github.com/microsoft/ccf-app-template/actions/workflows/ci.yml)
